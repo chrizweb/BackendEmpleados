@@ -6,9 +6,9 @@ namespace BackendEmpleados.Services.Implementacion {
   public class EmpleadoService : IEmpleadoService {
     private DbempleadosContext db_context;
 
-      public EmpleadoService(DbempleadosContext context) {
+    public EmpleadoService(DbempleadosContext context) {
       db_context = context;
-      }
+    }
     public async Task<List<Empleado>> GetList() {
       try {
 
@@ -16,23 +16,26 @@ namespace BackendEmpleados.Services.Implementacion {
         list = await db_context.Empleados.Include(dpt => dpt.IdDepartamentoNavigation).ToListAsync();
 
         return list;
-      
-      }catch(Exception e) {
-        throw e;
+
+       } catch (Exception) {
+        
+        throw;
       }
     }
+
     public async Task<Empleado> Get(int id_empleado) {
       try {
-
+        
         Empleado? empleado_encontrado = new Empleado();
         empleado_encontrado = await db_context.Empleados.Include(dpt => dpt.IdDepartamentoNavigation)
-        .Where(empleado => empleado.IdEmpleado == id_empleado)
-        .FirstOrDefaultAsync();
+          .Where(empleado => empleado.IdEmpleado == id_empleado)
+          .FirstOrDefaultAsync();
 
         return empleado_encontrado;
+         
+      } catch (Exception) {
 
-      } catch (Exception e) {
-        throw e;
+        throw;
       }
     }
 
@@ -41,21 +44,26 @@ namespace BackendEmpleados.Services.Implementacion {
 
         db_context.Empleados.Add(empleado);
         await db_context.SaveChangesAsync();
+
         return empleado;
 
-      } catch (Exception e) {
-        throw e;
+      } catch (Exception) {
+
+        throw;
       }
     }
+
     public async Task<bool> Update(Empleado empleado) {
       try {
 
         db_context.Empleados.Update(empleado);
         await db_context.SaveChangesAsync();
+
         return true;
 
-      } catch (Exception e) {
-        throw e;
+      } catch (Exception) {
+
+        throw;
       }
     }
 
@@ -64,11 +72,25 @@ namespace BackendEmpleados.Services.Implementacion {
 
         db_context.Empleados.Remove(empleado);
         await db_context.SaveChangesAsync();
+
         return true;
 
-      } catch (Exception e) {
-        throw e;
+      } catch (Exception) {
+
+        throw;
       }
     }
+   
   }
 }
+
+
+
+
+
+
+
+
+
+
+

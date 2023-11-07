@@ -2,6 +2,6 @@
 
 namespace BackendEmpleados.Services.Contrato {
   public interface IDepartamentoService {
-    Task<List<Departamento>> GetList();
+    Task<List<Departamento>> GetList();    
   }
 }

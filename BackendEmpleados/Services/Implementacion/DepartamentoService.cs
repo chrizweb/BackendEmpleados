@@ -7,7 +7,7 @@ namespace BackendEmpleados.Services.Implementacion {
     private DbempleadosContext db_context;
 
     public DepartamentoService(DbempleadosContext context) {
-      db_context = context;
+      this.db_context = context;
     }
 
     public async Task<List<Departamento>> GetList() {
@@ -15,9 +15,9 @@ namespace BackendEmpleados.Services.Implementacion {
         List<Departamento> list = new List<Departamento>();
         list = await db_context.Departamentos.ToListAsync();
         return list;
+      } catch (Exception) {
 
-      }catch(Exception e) {
-        throw e;
+        throw;
       }
     }
   }

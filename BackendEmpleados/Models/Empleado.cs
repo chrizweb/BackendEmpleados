@@ -12,7 +12,7 @@ public partial class Empleado
     public int? IdDepartamento { get; set; }
 
     public int? Sueldo { get; set; }
-
+   
     public DateTime? FechaContrato { get; set; }
 
     public DateTime? FechaCreacion { get; set; }
